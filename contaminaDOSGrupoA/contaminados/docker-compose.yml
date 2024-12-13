@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: .  # Usa el directorio actual como contexto, donde está el Dockerfile del frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Exponer el puerto 3000 para acceder al frontend
+    environment:
+      - NODE_ENV=development  # Ajusta según el entorno necesario (production, development)
+    networks:
+      - fe_network  # Red dedicada para el servicio frontend
+
+networks:
+  fe_network:
+    driver: bridge
